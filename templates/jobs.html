@@ -1,38 +1,23 @@
-{% extends "base.html" %} {% block content %}
+{% extends "base.html" %}
 
-<div class="container mt-5">
-  <div class="text-center mb-5">
-    <h1 class="fw-bold">Available Job Opportunities</h1>
-    <p class="lead">Explore the latest placement drives from top companies</p>
-  </div>
+{% block content %}
 
-  <div class="row">
-    {% for drive in drives %}
+<h2>Available Jobs</h2>
 
-    <div class="col-md-4 mb-4">
-      <div class="card shadow h-100">
-        <div class="card-body">
-          <h5 class="card-title">{{ drive.company_name }}</h5>
+{% for drive in drives %}
 
-          <p class="card-text">
-            <strong>Role:</strong> {{ drive.role }} <br />
+<div class="card">
 
-            <strong>Package:</strong> ₹ {{ drive.package }} LPA <br />
+<h3>{{ drive.job_title }}</h3>
 
-            <strong>Location:</strong> {{ drive.location }}
-          </p>
-        </div>
+<p>{{ drive.job_description }}</p>
 
-        <div class="card-footer text-center">
-          <a href="/apply/{{ drive.id }}" class="btn btn-primary">
-            Apply Now
-          </a>
-        </div>
-      </div>
-    </div>
+<p><b>Eligibility:</b> {{ drive.eligibility }}</p>
 
-    {% endfor %}
-  </div>
+<a href="/login" class="btn">Apply</a>
+
 </div>
+
+{% endfor %}
 
 {% endblock %}

@@ -4,43 +4,50 @@
 
 <div class="container mt-4">
 
-<h2 class="mb-4">Student Applications</h2>
+    <h2 class="mb-4">Student Applications</h2>
 
-<table class="table table-bordered">
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
 
-<thead>
-<tr>
-<th>Student</th>
-<th>Status</th>
-<th>Action</th>
-</tr>
-</thead>
+    <table class="table table-bordered">
 
-<tbody>
+        <thead>
+            <tr>
+                <th>Student</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
 
-{% for app in applications %}
+        <tbody>
 
-<tr>
-<td>{{ app.student.name }}</td>
-<td>{{ app.status }}</td>
+            {% for app in applications %}
 
-<td>
-<a href="/company/shortlist/{{ app.id }}" class="btn btn-success btn-sm">
-Shortlist
-</a>
+            <tr>
+                <td>{{ app.student.name }}</td>
+                <td>{{ app.status }}</td>
 
-<a href="/company/reject/{{ app.id }}" class="btn btn-danger btn-sm">
-Reject
-</a>
-</td>
+                <td>
 
-</tr>
+                    <a href="/company/shortlist/{{ app.id }}" 
+                       class="btn btn-success btn-sm">
+                        Shortlist
+                    </a>
 
-{% endfor %}
+                    <a href="/company/reject/{{ app.id }}" 
+                       class="btn btn-danger btn-sm">
+                        Reject
+                    </a>
 
-</tbody>
+                </td>
+            </tr>
 
-</table>
+            {% endfor %}
+
+        </tbody>
+
+    </table>
 
 </div>
 

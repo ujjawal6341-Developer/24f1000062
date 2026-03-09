@@ -18,6 +18,12 @@ def register():
         website = request.form["website"]
         password = request.form["password"]
 
+        # Check if email already exists
+        existing_company = Company.query.filter_by(email=email).first()
+
+        if existing_company:
+            return "Company with this email already exists. Please login."
+
         new_company = Company(
             company_name=company_name,
             email=email,
@@ -30,7 +36,7 @@ def register():
 
         return redirect("/login")
 
-    return render_template("company/register.html")
+    return render_template("company/register.html", error="Email already exists")
 
 # ==============================
 # Company Shortlist Students
