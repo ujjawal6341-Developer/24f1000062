@@ -2,29 +2,48 @@
 
 {% block content %}
 
-<h2>All Placement Drives</h2>
+<div class="container mt-4">
 
-<table class="table">
+<h2 class="mb-4">All Placement Drives</h2>
 
+<table class="table table-bordered table-striped">
+
+<thead>
 <tr>
 <th>Company</th>
 <th>Role</th>
 <th>Status</th>
 <th>Action</th>
 </tr>
+</thead>
+
+<tbody>
+
+{% for drive in drives %}
 
 <tr>
-<td>Microsoft</td>
-<td>Software Engineer</td>
-<td>Pending</td>
+<td>{{ drive.company_name }}</td>
+<td>{{ drive.role }}</td>
+<td>{{ drive.status }}</td>
 
 <td>
-<button class="btn btn-success">Approve</button>
-<button class="btn btn-danger">Reject</button>
+<a href="/admin/drive/approve/{{ drive.id }}" class="btn btn-success btn-sm">
+Approve
+</a>
+
+<a href="/admin/drive/reject/{{ drive.id }}" class="btn btn-danger btn-sm">
+Reject
+</a>
 </td>
 
 </tr>
 
+{% endfor %}
+
+</tbody>
+
 </table>
+
+</div>
 
 {% endblock %}

@@ -1,19 +1,38 @@
-{% extends "base.html" %}
+{% extends "base.html" %} {% block content %}
 
-{% block content %}
+<div class="container mt-4">
+  <h2 class="mb-4">Student Profile</h2>
 
-<h2>Student Profile</h2>
+  <form method="POST" enctype="multipart/form-data">
+    <input
+      type="text"
+      class="form-control mb-3"
+      name="name"
+      placeholder="Name"
+      required
+    />
 
-<form method="POST">
+    <input
+      type="email"
+      class="form-control mb-3"
+      name="email"
+      placeholder="Email"
+      required
+    />
 
-<input class="form-control mb-3" name="name" placeholder="Name">
+    <input
+      type="text"
+      class="form-control mb-3"
+      name="course"
+      placeholder="Course"
+      required
+    />
 
-<input class="form-control mb-3" name="email" placeholder="Email">
+    <label class="mb-2">Upload Resume</label>
+    <input type="file" class="form-control mb-3" name="resume" />
 
-<input class="form-control mb-3" name="course" placeholder="Course">
-
-<button class="btn btn-primary">Update Profile</button>
-
-</form>
+    <button type="submit" class="btn btn-primary">Update Profile</button>
+  </form>
+</div>
 
 {% endblock %}

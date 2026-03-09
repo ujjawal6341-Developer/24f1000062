@@ -2,27 +2,46 @@
 
 {% block content %}
 
-<h2>Student Applications</h2>
+<div class="container mt-4">
 
-<table class="table">
+<h2 class="mb-4">Student Applications</h2>
 
+<table class="table table-bordered">
+
+<thead>
 <tr>
 <th>Student</th>
 <th>Status</th>
 <th>Action</th>
 </tr>
+</thead>
+
+<tbody>
+
+{% for app in applications %}
 
 <tr>
-<td>Ujjawal</td>
-<td>Applied</td>
+<td>{{ app.student.name }}</td>
+<td>{{ app.status }}</td>
+
 <td>
+<a href="/company/shortlist/{{ app.id }}" class="btn btn-success btn-sm">
+Shortlist
+</a>
 
-<button class="btn btn-success">Shortlist</button>
-<button class="btn btn-danger">Reject</button>
-
+<a href="/company/reject/{{ app.id }}" class="btn btn-danger btn-sm">
+Reject
+</a>
 </td>
+
 </tr>
 
+{% endfor %}
+
+</tbody>
+
 </table>
+
+</div>
 
 {% endblock %}

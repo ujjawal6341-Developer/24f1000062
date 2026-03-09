@@ -1,5 +1,7 @@
 from flask import Blueprint, render_template, request, redirect, session
 from models import db, Student, Drive, Application
+from werkzeug.utils import secure_filename
+import os
 
 # Create Blueprint
 student_bp = Blueprint("student", __name__)
@@ -61,9 +63,36 @@ def profile():
         return redirect("/login")
 
     student_id = session.get("student_id")
-    student_data = Student.query.get(student_id)
+    student_data = db.session.get(Student, student_id)
 
     return render_template("student/profile.html", student=student_data)
+
+# ===============================
+# Student Resume
+# ===============================
+
+@student_bp.route("/student/upload_resume", methods=["POST"])
+def upload_resume():
+
+    if not session.get("student_id"):
+        return redirect("/login")
+
+    file = request.files["resume"]
+
+    if file:
+
+        filename = secure_filename(file.filename)
+
+        path = os.path.join("static/resumes", filename)
+
+        file.save(path)
+
+        student = Student.query.get(session["student_id"])
+        student.resume = filename
+
+        db.session.commit()
+
+    return redirect("/student/profile")
 
 
 # ===============================
@@ -75,7 +104,8 @@ def drives():
     if not session.get("student_id"):
         return redirect("/login")
 
-    drives = Drive.query.all()
+    # Only show approved drives
+    drives = Drive.query.filter_by(status="Approved").all()
 
     return render_template("student/drives.html", drives=drives)
 

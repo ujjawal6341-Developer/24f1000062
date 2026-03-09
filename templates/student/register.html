@@ -4,17 +4,20 @@
 
 <h2>Student Registration</h2>
 
-<form method="POST">
+<form action="/student/register" method="POST" enctype="multipart/form-data">
 
-<input class="form-control mb-3" name="name" placeholder="Full Name">
+  <input class="form-control mb-3" type="text" name="name" placeholder="Full Name" required>
 
-<input class="form-control mb-3" name="email" placeholder="Email">
+  <input class="form-control mb-3" type="email" name="email" placeholder="Email" required>
 
-<input class="form-control mb-3" name="password" placeholder="Password">
+  <input class="form-control mb-3" type="password" name="password" placeholder="Password" required>
 
-<input class="form-control mb-3" name="course" placeholder="Course">
+  <input class="form-control mb-3" type="text" name="course" placeholder="Course" required>
 
-<button class="btn btn-success">Register</button>
+  <label class="mb-2">Upload Resume</label>
+  <input class="form-control mb-3" type="file" name="resume" required>
+
+  <button class="btn btn-success" type="submit">Register</button>
 
 </form>
 

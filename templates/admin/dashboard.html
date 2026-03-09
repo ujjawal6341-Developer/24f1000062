@@ -1,15 +1,23 @@
-{% extends "base.html" %}
+<div style="display:flex; gap:20px;">
 
-{% block content %}
+<div class="card">
+<h3>Total Students</h3>
+<p>{{ students }}</p>
+</div>
 
-<h2>Admin Dashboard</h2>
+<div class="card">
+<h3>Total Companies</h3>
+<p>{{ companies }}</p>
+</div>
 
-<a class="btn btn-primary" href="/admin/students">Students</a>
+<div class="card">
+<h3>Total Drives</h3>
+<p>{{ drives }}</p>
+</div>
 
-<a class="btn btn-success" href="/admin/companies">Companies</a>
+<div class="card">
+<h3>Total Applications</h3>
+<p>{{ applications }}</p>
+</div>
 
-<a class="btn btn-warning" href="/admin/drives">Drives</a>
-
-<a class="btn btn-danger" href="/admin/applications">Applications</a>
-
-{% endblock %}
+</div>
