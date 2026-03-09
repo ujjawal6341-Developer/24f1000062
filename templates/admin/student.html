@@ -1,0 +1,25 @@
+{% extends "base.html" %} {% block content %}
+
+<h2>Students List</h2>
+
+<table class="table table-bordered">
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Course</th>
+  </tr>
+
+  {% for student in students %}
+
+  <tr>
+    <td>{{ student.id }}</td>
+    <td>{{ student.name }}</td>
+    <td>{{ student.email }}</td>
+    <td>{{ student.course }}</td>
+  </tr>
+
+  {% endfor %}
+</table>
+
+{% endblock %}
